@@ -95,7 +95,7 @@ int mainMenu (char String[], char stringOriginal[])
             char sortedString[51][11];
             int sortedStringElements=alphabeticalSort(String, sortedString);
             cout << "Отсортрованные в алфавитном порядке слова:" << endl;
-            for (int i=0; i<sortedStringElements; i++) cout << sortedString[i] << " ";
+            for (int i=0; i<sortedStringElements+1; i++) cout << sortedString[i] << " ";
             cout << endl << endl;
             return 1;
           }
@@ -240,8 +240,8 @@ int alphabeticalSort (char String[], char sortedString[51][11])
             if (number) StringCut (stringMod, i+1, number);
           };
     if (isCharASpace(stringMod[0])) StringCut (stringMod, 0, 1);
-    int sortedStringElements=0;
-    for (int i=0, k=0; i<strlen(stringMod); i++)
+    int sortedStringElements=0, k=0;
+    for (int i=0; i<strlen(stringMod); i++)
       {
         if (isCharASpace(stringMod[i]))
           {
@@ -255,6 +255,7 @@ int alphabeticalSort (char String[], char sortedString[51][11])
             k++;
           }
       }
+    sortedString[sortedStringElements][k]='\0';
     int sorted=0;
     int currentMaxUnsorted=sortedStringElements-1;
     while (!sorted)
@@ -281,7 +282,7 @@ void numberSymbols (char String[])
     char sortedString[51][11];
     int sortedStringElements=alphabeticalSort (String, sortedString);
     cout << endl;
-    for (int i=0; i<sortedStringElements;i++) cout << strlen(sortedString[i]) << "\t" << sortedString[i] << endl;
+    for (int i=0; i<sortedStringElements+1;i++) cout << strlen(sortedString[i]) << "\t" << sortedString[i] << endl;
     cout << endl;
   }
   
